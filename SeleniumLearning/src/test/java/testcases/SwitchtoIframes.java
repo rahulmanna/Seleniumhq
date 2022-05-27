@@ -1,6 +1,7 @@
 package testcases;
 
-import java.util.Collections;
+import java.util.Arrays;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -10,7 +11,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.opentelemetry.exporter.logging.SystemOutLogExporter;
 
 public class SwitchtoIframes 
 {
@@ -18,7 +18,8 @@ public class SwitchtoIframes
 		
         ChromeOptions option=new ChromeOptions();
         option.setAcceptInsecureCerts(true);
-        option.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+        //option.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+        option.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
