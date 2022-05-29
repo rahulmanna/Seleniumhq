@@ -1,12 +1,10 @@
 package cromeDevTool;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v100.emulation.Emulation;
-
-import com.google.common.base.Optional;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class MocGeoLocation 
@@ -17,15 +15,17 @@ public class MocGeoLocation
 		
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
-		
+		driver.manage().window().maximize();
 		DevTools devTools = ((ChromeDriver) driver).getDevTools();
-//		devTools.createSession();
-//		devTools.send(Emulation.setGeolocationOverride(Optional.of(52.5043),
-//                Optional.of(13.4501),
-//                Optional.of(1)));
-		//devTools.send(Emulation.setGeolocationOverride(Optional.of((Number)51.509865), Optional.of((Number)(double)-0.118092), Optional.of((Number)100)));
+		devTools.createSession();
+        
+		Map<String,Object> setlocation=new HashMap<String,Object>();
+		setlocation.put("latitude", 52.5043);
+		setlocation.put("longitude", 13.4501);
+		setlocation.put("accuracy", 1);
+		((ChromeDriver)driver).executeCdpCommand("Emulation.setGeolocationOverride",setlocation);
 		
-		driver.get("https://mycurrentlocation.net/");
+		driver.get("https://my-location.org/");
 		
  
 	}
