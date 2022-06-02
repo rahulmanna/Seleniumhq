@@ -70,7 +70,7 @@ public class TestHandlingCalender
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.get("file:///C:/Users/rahma/OneDrive%20-%20TRICENTIS/Desktop/same.html");
+		driver.get("C:\\eclipse\\Selenium doc\\same.html");
 		
 		driver.findElement(By.className("hasDatepicker")).click();
 		GetTargetDateMonthYear(dateToSet);
